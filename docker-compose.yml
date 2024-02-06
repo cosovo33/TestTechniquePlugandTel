@@ -1,0 +1,30 @@
+services:
+  api:
+    image: node:20
+    container_name: api
+    working_dir: /app
+    command: node server.js
+    ports:
+      - "3001:3001"
+    volumes:
+      - "./back-end/:/app"
+  web:
+    image: node:20
+    container_name: web
+    working_dir: /src
+    command: npm start
+    ports:
+      - "3000:3000"
+    volumes:
+      - "./front-end/:/src"
+
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: 
+      MONGO_INITDB_ROOT_PASSWORD: 
+    volumes:
+      - db-data:/data/db
+volumes:
+  db-data: {}
