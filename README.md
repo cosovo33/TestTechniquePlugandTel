@@ -8,6 +8,7 @@ MERN Project for a technical test with Plug and Tel . This App is a todo single-
 - **React.js**: A JavaScript library for building user interfaces used for the front-end.
 - **Node.js**: A JavaScript runtime environment used for running server-side code.
 - **docker-compose**: A tool for defining and running multi-container Docker applications used for Dockerization.
+- **Material-UI**: open-source React component library that implements Google's Material Design. 
 
 ## Project Structure
 
@@ -41,69 +42,6 @@ The project is organized as follows:
 
 - `README.md`: Readme file for the project.
 
-This is the visual representation:
-
-TestTechniquePlugandTel
-│ README.md
-│ LICENSE
-│ docker-compose.yml
-│
-├── back-end
-│ │ DockerFile
-│ │ jest.config.js
-│ │ package-lock.json
-│ │ package.json
-│ │ server.js
-│ │
-│ ├── tests
-│ │ │ createTask.test.js
-│ │ │
-│ ├── model
-│ │ │ task.js
-│ │ │
-│ ├── routes
-│ │ │ taskRoutes.js
-│ │ │
-│ └── validation
-│ │ taskValidationSchema.js
-│ │
-├── front-end
-│ │ DockerFile
-│ │ package-lock.json
-│ │ package.json
-│ │ README.md
-│ │
-│ ├── node_modules
-│ │ │ [Ignored - Not Shown]
-│ │ │
-│ ├── public
-│ │ │ [Ignored - Not Shown]
-│ │ │
-│ ├── src
-│ │ │ App.css
-│ │ │ App.js
-│ │ │ App.test.js
-│ │ │ index.css
-│ │ │ index.js
-│ │ │ reportWebVitals.js
-│ │ │ setupTests.js
-│ │ │
-│ ├── components
-│ │ ├── cardItems
-│ │ │ │ CardComponent.jsx
-│ │ │ │
-│ │ ├── modals
-│ │ │ │ CreateTaskModal.jsx
-│ │ │ │ EditTaskModal.jsx
-│ │ │ │
-│ │ ├── Navbars
-│ │ │ │ HorizentalNavbar.jsx
-│ │ │ │ VerticalNavbar.jsx
-│ │ │ │
-│ │ ├── search
-│ │ │ │ SearchComponent.jsx
- 
-
 ## Screenshots
 
 Here are some screenshots of the application:
@@ -111,35 +49,32 @@ Here are some screenshots of the application:
 ![Main](screenshots/Main.png)
 *The Todo App home page*
 
-![CreateTaskModal](screenshots/CraeteTaskModal.png)
+![CreateTaskModal](screenshots/CreateTaskModal.png)
 *Task creation modal form*
-
+the user clicks on the addNote Icon on bottom right.A modal will be displayed with a Form.
+the user must fill the input fields with the following entries: 
+- @title: string
+- @Description: string
+- @dueDate: Date
+- @order: autoFilled and disabled
 ![EditTaskModal](screenshots/EditTaskModal.png)
 *task modification*
-
+to open the modal for modification, the user must click on the EditNote Icon next to status of tasks.
+the user must then fill the necessary fields: 
+- @title: string
+- @Description: string
+- @dueDate: Date
+To delete a task , the user can click on the Bin Icon next to EditNote Icon and confirm the deletion.
 ![SearchByDate](screenshots/SearchByDate.png)
 *search by date input*
-
+the user clicks on the DatePicker input field. Then selects a date .
+After clicking on "Aujourd'hui" button, the tasks having that selected date will be displayed .
+the user must pick date from the DatePicker
 ![StatusList](screenshots/StatusList.png)
 *Change the status by selecting from the list*
 
-## Usage
 
-To run the application, make sure you have Docker installed on your system. Then, follow these steps:
-
-1. Clone this repository to your local machine.
-2. Navigate to the project directory.
-3. Open a terminal and run the following command to start the containers:
-
-```bash
-docker-compose up --build
-
-**Start Containers**
-
-```bash
-docker-compose start
-
-##Example of task json object :
+# Example of task json object :
     {
         "_id": "65c129d8306ae432cd1e91de",
         "title": "La premiére tâche",
@@ -161,5 +96,22 @@ docker-compose start
 - **Filter tasks by status:** `GET /api/tasks/by-status/:status`
 - **Search tasks by keyword in title and description:** `GET /api/tasks/search/:keyword`
 - **Switch the order attribute between two tasks:** `PUT /api/tasks/switch-order/:id`
-**check taskRoutes.js file to see the APIs code snippets**
+**check /backend/routes/taskRoutes.js file to see the APIs code snippets**
+
+## Usage
+
+To run the application, make sure you have Docker installed on your system. Then, follow these steps:
+
+1. Clone this repository to your local machine.
+2. Navigate to the project directory.
+3. Open a terminal and run the following command to start the containers:
+
+```bash
+docker-compose up --build
+
+**Start Containers**
+
+docker-compose start
+
+
 
